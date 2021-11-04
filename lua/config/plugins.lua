@@ -9,12 +9,20 @@ return require('packer').startup(function()
   use { 'wbthomason/packer.nvim', opt = true }
 
   -- Styling
-  use { 'sainnhe/edge' }
+  -- use { 'sainnhe/edge' }
+  use { 'marko-cerovac/material.nvim' }
 
-  -- Fuzzy finder
+  -- Telescope finder
   use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
+  -- Directory tree explorer
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function() require'nvim-tree'.setup {} end
   }
 
   -- Syntax parsing
