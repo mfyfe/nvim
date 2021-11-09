@@ -9,13 +9,12 @@ return require('packer').startup(function()
   use { 'wbthomason/packer.nvim', opt = true }
 
   -- Styling
-  -- use { 'sainnhe/edge' }
   use { 'marko-cerovac/material.nvim' }
 
   -- Telescope finder
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = { 'nvim-lua/plenary.nvim' }
   }
 
   -- Directory tree explorer

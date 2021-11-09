@@ -10,5 +10,5 @@ require('nvim-treesitter.configs').setup{
   },
 }
 
---vim.treesitter.set_query("php", "folds", read_query("~/.config/nvim/queries/php/folds.scm"))
+vim.treesitter.set_query("php", "folds", read_query("~/.config/nvim/queries/php/folds.scm"))
 -- vim.treesitter.set_query("php", "highlights", read_query("~/.config/nvim/queries/php/highlights.scm"))
