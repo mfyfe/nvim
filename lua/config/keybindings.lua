@@ -10,7 +10,7 @@ remap('n', '<leader>d', ':NvimTreeToggle<CR>', opts)
 remap('n', '<leader>v', '<C-w>v', opts)
 
 -- Reload nvim config.
-remap('n', '<leader>rc', ':so ~/.config/nvim/init.lua<CR>', opts)
+remap('n', '<leader>rc', ':so ~/.config/nvim/init.lua<CR>:echo "Config Reloaded"<CR>', opts)
 
 -- TroubleToggle view
 remap('n', '<leader>tt', ':TroubleToggle<CR>', opts)
@@ -28,6 +28,16 @@ remap('n', '<C-k>', '5k', opts)
 -- Alt+Shift+J/K: Move current line up or down by 1.
 remap('n', '<A-J>', ':m .+1<CR>', opts)
 remap('n', '<A-K>', ':m .-2<CR>', opts)
+
+-- Displays hover information about the symbol under the cursor.
+remap('n', '<leader>k', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+
+-- Open a floating window with the diagnostics from {line_nr}
+remap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+
+
+remap('n', '<C-h>', ':exe "vertical resize " . winwidth(0) - 10<CR>', {});
+remap('n', '<C-l>', ':exe "vertical resize " . winwidth(0) + 10<CR>', {});
 
 ----
 
