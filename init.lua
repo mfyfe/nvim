@@ -11,31 +11,23 @@ require('config.completion')
 require('config.lsp')
 require('config.keybindings')
 
--- Edge
--- vim.g.edge_style = 'default'
--- vim.g.edge_show_eob = 1
--- vim.g.edge_enable_italic = 1
--- vim.g.edge_transparent_background = 0
--- vim.g.edge_menu_selection_background = 'blue'
--- vim.g.edge_diagnostic_text_highlight = 0
--- vim.g.edge_diagnostic_line_highlight = 0
--- vim.g.edge_diagnostic_virtual_text = 'grey'
--- vim.cmd('colorscheme edge')
-
--- Material
-vim.cmd 'colorscheme material'
+-- Material 
+-- NOTE: style must be set before setting colorscheme.
 vim.g.material_style = 'deep ocean'
+vim.cmd 'colorscheme material'
 
--- WSL clipboard
--- vim.g.clipboard = {
---     name = "win32yank-wsl",
---     copy = {
---         ["+"] = "win32yank.exe -i --crlf",
---         ["*"] = "win32yank.exe -i --crlf"
---     },
---     paste = {
---         ["+"] = "win32yank.exe -o --lf",
---         ["*"] = "win32yank.exe -o --lf"
---     },
---     cache_enable = 0,
--- }
+-- Display relative numbers on each buffer.
+vim.api.nvim_exec('au BufWinEnter c set relativenumber' , false)
+
+-- WSL yank support.
+-- vim.api.nvim_exec(
+-- [[
+-- let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+-- if executable(s:clip)
+--     augroup WSLYank
+--         autocmd!
+--         autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+--     augroup END
+-- endif
+-- ]],
+-- true)

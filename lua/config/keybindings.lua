@@ -3,8 +3,8 @@ local opts  = { noremap = true, silent = true }
 
 -- Normal Mode
 
--- Toggle NvimTree.
-remap('n', '<leader>d', ':NvimTreeToggle<CR>', opts)
+-- Toggle NeoTree.
+remap('n', '<leader>d', ':NeoTreeRevealToggle<CR>', opts)
 
 -- Split window vertically and go to new pane.
 remap('n', '<leader>v', '<C-w>v', opts)
@@ -13,7 +13,7 @@ remap('n', '<leader>v', '<C-w>v', opts)
 remap('n', '<leader>rc', ':so ~/.config/nvim/init.lua<CR>:echo "Config Reloaded"<CR>', opts)
 
 -- TroubleToggle view
-remap('n', '<leader>tt', ':TroubleToggle<CR>', opts)
+remap('n', '<leader>tt', ':TroubleToggle document_diagnostics<CR>', opts)
 
 -- Comment toggle current line.
 remap('n', '<leader>c', ":CommentToggle<CR>", opts)
