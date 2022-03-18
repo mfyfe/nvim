@@ -55,31 +55,42 @@ return require('packer').startup(function()
   }
 
   -- Commenting
-  use {
-    'terrortylor/nvim-comment',
-    run = require('nvim_comment').setup(),
-  }
+  use "terrortylor/nvim-comment"
+  require('nvim_comment').setup()
 
   -- Status line
   use {
-    'hoob3rt/lualine.nvim',
-    run = require('lualine').setup({
-      options = {
-        icons_enabled = false,
-        theme = 'material-nvim',
-        section_separators = '',
-        component_separators = '',
-        path = 1,
-      },
-      sections = {
-        lualine_a = {'mode'},
-        lualine_b = {'branch', {'diagnostics', sources = {"nvim_lsp"}}},
-        lualine_d = {'filename'},
-        lualine_x = {'encoding', 'fileformat', 'filetype'},
-        lualine_y = {'progress'},
-        lualine_z = {'location'}
-      },
-    })
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
+  require('lualine').setup {
+    options = {
+      icons_enabled = true,
+      theme = 'auto',
+      component_separators = { left = '', right = ''},
+      section_separators = { left = '', right = ''},
+      disabled_filetypes = {},
+      always_divide_middle = true,
+      globalstatus = false,
+    },
+    sections = {
+      lualine_a = {'mode'},
+      lualine_b = {'branch', 'diff', 'diagnostics'},
+      lualine_c = {'filename'},
+      lualine_x = {'encoding', 'fileformat', 'filetype'},
+      lualine_y = {'progress'},
+      lualine_z = {'location'}
+    },
+    inactive_sections = {
+      lualine_a = {},
+      lualine_b = {},
+      lualine_c = {'filename'},
+      lualine_x = {'location'},
+      lualine_y = {},
+      lualine_z = {}
+    },
+    tabline = {},
+    extensions = {}
   }
 
   use {
