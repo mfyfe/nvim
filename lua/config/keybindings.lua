@@ -35,11 +35,17 @@ remap('n', '<leader>k', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 -- Open a floating window with the diagnostics from {line_nr}
 remap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
 
+-- Toggle invisible characters.
+remap('n', '<leader>tw', ':set list!<CR>', opts);
 
-remap('n', '<C-h>', ':exe "vertical resize " . winwidth(0) - 10<CR>', {});
-remap('n', '<C-l>', ':exe "vertical resize " . winwidth(0) + 10<CR>', {});
+-- Adjust indent size.
+remap('n', '<leader>i2', ':set shiftwidth=2<CR>:set tabstop=2<CR>:echo "Indent 2 spaces"<CR>', opts)
+remap('n', '<leader>i4', ':set shiftwidth=4<CR>:set tabstop=4<CR>:echo "Indent 4 spaces"<CR>', opts)
 
-----
+-- Prevent x and the delete key from overriding what's in the clipboard.
+remap('n', 'x', '"_x', opts)
+remap('n', 'X', '"_x', opts)
+remap('n', '<Del>', '"_x', opts)
 
 -- Visual mode
 
@@ -56,7 +62,7 @@ remap('v', '<A-K>', ":m '<-2<CR>gv=gv", opts)
 
 -- Comment toggle selection.
 remap('v', '<leader>c', ":CommentToggle<CR>", opts)
-
+remap('v', '<C-_>', ":CommentToggle<CR>", opts) -- VSCode
 
 ----
 
@@ -71,6 +77,6 @@ remap("n", "<leader>fc", ":Telescope find_files cwd=~/.config/nvim <CR>", opts) 
 -- remap("n", "<leader>tof", ":Telescope oldfiles <CR>", opts)
 -- remap("n", "<leader>tdd", ":Telescope lsp_document_diagnostics <CR>", opts)
 -- remap("n", "<leader>twd", ":Telescope lsp_workspace_diagnostics <CR>", opts)
--- remap("n", "<leader>tlg", ":Telescope live_grep <CR>", opts)
+remap("n", "<leader>lg", ":Telescope live_grep <CR>", opts)
 -- remap("n", "<leader>tgs", ":Telescope git_status <CR>", opts)
 

@@ -17,6 +17,8 @@ return require('packer').startup(function()
     requires = { 'nvim-lua/plenary.nvim' }
   }
 
+  use { 'mhinz/vim-signify' }
+
   -- Syntax parsing
   use {
     'nvim-treesitter/nvim-treesitter',
