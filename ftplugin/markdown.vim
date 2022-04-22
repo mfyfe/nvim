@@ -20,7 +20,3 @@ setlocal nolinebreak
 " let g:vim_markdown_follow_anchor           = 1
 " let g:vim_markdown_new_list_item_indent    = 4
 " let g:vim_markdown_autowrite               = 0
-
-" nmap <silent>gf <Plug>Markdown_EditUrlUnderCursor
-" nmap <silent>= V:HeaderIncrease<CR>
-" nmap <silent>- V:HeaderDecrease<CR>

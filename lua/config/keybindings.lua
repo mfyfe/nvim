@@ -3,6 +3,9 @@ local opts  = { noremap = true, silent = true }
 
 -- Normal Mode
 
+-- Write file
+remap('n', '<leader>w', ':w<CR>', opts)
+
 -- Toggle NeoTree.
 remap('n', '<leader>d', ':NeoTreeRevealToggle<CR>', opts)
 
@@ -68,6 +71,7 @@ remap('v', '<C-_>', ":CommentToggle<CR>", opts) -- VSCode
 
 -- Telescope
 remap("n", "<leader>ff", ":Telescope find_files <CR>", opts) -- Find files
+remap("n", "<leader>fg", ":Telescope git_status <CR>", opts) -- Find git files
 remap("n", "<leader>fb", ":Telescope buffers <CR>", opts) -- Find in buffers
 remap("n", "<leader>fd", ":Telescope find_files cwd=%:h <CR>", opts) -- Find in directory
 remap("n", "<leader>fc", ":Telescope find_files cwd=~/.config/nvim <CR>", opts) -- Find in nvim config.

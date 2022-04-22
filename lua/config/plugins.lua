@@ -1,12 +1,9 @@
 local execute = vim.api.nvim_command
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
-
-vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
 
-  use { 'wbthomason/packer.nvim', opt = true }
+  use { 'wbthomason/packer.nvim' }
 
   -- Styling
   use { 'marko-cerovac/material.nvim' }
@@ -17,6 +14,7 @@ return require('packer').startup(function()
     requires = { 'nvim-lua/plenary.nvim' }
   }
 
+  -- Mark lines with git changes
   use { 'mhinz/vim-signify' }
 
   -- Syntax parsing
@@ -59,6 +57,9 @@ return require('packer').startup(function()
   -- Commenting
   use "terrortylor/nvim-comment"
   require('nvim_comment').setup()
+
+  -- HTML completion
+  use { 'mattn/emmet-vim' }
 
   -- Status line
   use {
@@ -137,7 +138,7 @@ return require('packer').startup(function()
             ["H"] = "toggle_hidden",
             ["I"] = "toggle_gitignore",
             ["R"] = "refresh",
-            ["/"] = "filter_as_you_type",
+            --["/"] = "filter_as_you_type",
             --["/"] = "none" -- Assigning a key to "none" will remove the default mapping
             ["f"] = "filter_on_submit",
             ["<c-x>"] = "clear_filter",
