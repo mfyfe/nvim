@@ -3,6 +3,10 @@ local opts  = { noremap = true, silent = true }
 
 -- Normal Mode
 
+-- Toggle inline LSP diagnostics
+remap('n', '<leader>tdo', ':ToggleDiagOn<CR>', opts) -- toggle diagnostics on
+remap('n', '<leader>tdf', ':ToggleDiagOff<CR>', opts) -- toggle diagnostics off
+
 -- Write file
 remap('n', '<leader>w', ':w<CR>', opts)
 
@@ -50,6 +54,15 @@ remap('n', 'x', '"_x', opts)
 remap('n', 'X', '"_x', opts)
 remap('n', '<Del>', '"_x', opts)
 
+-- Jump to enclosing block
+remap('n', '^', '[{', opts);
+
+-- Change foldmethod
+remap('n', '<leader>fmi', ':set foldmethod=indent<CR>', opts); -- fold method indent
+remap('n', '<leader>fme', ':set foldmethod=expr<CR>', opts); -- fold method expr
+remap('n', '<leader>fmm', ':set foldmethod=manual<CR>', opts); -- fold method manual
+remap('n', '<leader>sfm', ':set foldmethod?<CR>', opts); -- show fold method
+
 -- Visual mode
 
 -- Alt+J/K: Move cursor 10 lines.
@@ -67,6 +80,9 @@ remap('v', '<A-K>', ":m '<-2<CR>gv=gv", opts)
 remap('v', '<leader>c', ":CommentToggle<CR>", opts)
 remap('v', '<C-_>', ":CommentToggle<CR>", opts) -- VSCode
 
+-- Search within visual selection
+remap('v', '/', '<Esc>/\\%V', opts)
+
 ----
 
 -- Telescope
@@ -75,12 +91,12 @@ remap("n", "<leader>fg", ":Telescope git_status <CR>", opts) -- Find git files
 remap("n", "<leader>fb", ":Telescope buffers <CR>", opts) -- Find in buffers
 remap("n", "<leader>fd", ":Telescope find_files cwd=%:h <CR>", opts) -- Find in directory
 remap("n", "<leader>fc", ":Telescope find_files cwd=~/.config/nvim <CR>", opts) -- Find in nvim config.
+remap("n", "<leader>lg", ":Telescope live_grep <CR>", opts)
 -- remap("n", "<leader>o", ":Telescope lsp_document_symbols symbols='method' <CR>", opts)
 -- remap("n", "<leader>tt", ":Telescope <CR>", opts)
 -- remap("n", "<leader>tds", ":Telescope lsp_document_symbols <CR>", opts)
 -- remap("n", "<leader>tof", ":Telescope oldfiles <CR>", opts)
 -- remap("n", "<leader>tdd", ":Telescope lsp_document_diagnostics <CR>", opts)
 -- remap("n", "<leader>twd", ":Telescope lsp_workspace_diagnostics <CR>", opts)
-remap("n", "<leader>lg", ":Telescope live_grep <CR>", opts)
 -- remap("n", "<leader>tgs", ":Telescope git_status <CR>", opts)
 

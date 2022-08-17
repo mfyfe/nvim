@@ -5,6 +5,12 @@ return require('packer').startup(function()
 
   use { 'wbthomason/packer.nvim' }
 
+  -- Prettier
+  use { 'sbdchd/neoformat' }
+
+  -- Abolish
+  use { 'tpope/vim-abolish' }
+
   -- Styling
   use { 'marko-cerovac/material.nvim' }
 
@@ -27,6 +33,10 @@ return require('packer').startup(function()
   use {
     'neovim/nvim-lspconfig',
     'lspcontainers/lspcontainers.nvim'
+  }
+
+  use {
+    'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
   }
 
   -- LSP Trouble view

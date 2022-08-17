@@ -55,3 +55,6 @@ nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   root_dir = util.root_pattern(".git", vim.fn.getcwd()),
 }
+
+
+require'toggle_lsp_diagnostics'.init()
