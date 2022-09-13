@@ -4,14 +4,17 @@ local opts  = { noremap = true, silent = true }
 -- Normal Mode
 
 -- Toggle inline LSP diagnostics
-remap('n', '<leader>tdo', ':ToggleDiagOn<CR>', opts) -- toggle diagnostics on
-remap('n', '<leader>tdf', ':ToggleDiagOff<CR>', opts) -- toggle diagnostics off
+remap('n', '<leader>D', ':ToggleDiagOn<CR>', opts) -- toggle diagnostics on
+remap('n', '<leader>d-', ':ToggleDiagOff<CR>', opts) -- toggle diagnostics off
 
 -- Write file
 remap('n', '<leader>w', ':w<CR>', opts)
 
+-- Jump to parent enclosure
+remap('n', '^', '[{', opts);
+
 -- Toggle NeoTree.
-remap('n', '<leader>d', ':NeoTreeRevealToggle<CR>', opts)
+remap('n', '<leader>dd', ':NeoTreeRevealToggle<CR>', opts)
 
 -- Split window vertically and go to new pane.
 remap('n', '<leader>v', '<C-w>v', opts)
