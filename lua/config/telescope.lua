@@ -2,6 +2,8 @@ local telescope = require('telescope')
 local actions = require('telescope.actions');
 local action_set = require("telescope.actions.set")
 
+telescope.load_extension("live_grep_args")
+
 local files = {
   hidden = true,
   attach_mappings = function(_)
@@ -44,4 +46,3 @@ telescope.setup({
     gitstatus = files,
   },
 })
-

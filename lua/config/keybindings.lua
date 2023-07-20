@@ -43,7 +43,7 @@ remap('n', '<A-K>', ':m .-2<CR>', opts)
 remap('n', '<leader>k', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 
 -- Open a floating window with the diagnostics from {line_nr}
-remap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+remap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 
 -- Toggle invisible characters.
 remap('n', '<leader>tw', ':set list!<CR>', opts);
@@ -51,6 +51,10 @@ remap('n', '<leader>tw', ':set list!<CR>', opts);
 -- Adjust indent size.
 remap('n', '<leader>i2', ':set shiftwidth=2<CR>:set tabstop=2<CR>:echo "Indent 2 spaces"<CR>', opts)
 remap('n', '<leader>i4', ':set shiftwidth=4<CR>:set tabstop=4<CR>:echo "Indent 4 spaces"<CR>', opts)
+
+-- Switch between Tabs and Spaces
+remap('n', '<leader>st', ':set autoindent noexpandtab<CR>:echo "Indent with tabs"<CR>', opts)
+remap('n', '<leader>ss', ':set autoindent expandtab<CR>:echo "Indent with spaces"<CR>', opts)
 
 -- Prevent x and the delete key from overriding what's in the clipboard.
 remap('n', 'x', '"_x', opts)
@@ -86,6 +90,11 @@ remap('v', '<C-_>', ":CommentToggle<CR>", opts) -- VSCode
 -- Search within visual selection
 remap('v', '/', '<Esc>/\\%V', opts)
 
+-- Refactor PHP Array > Object
+-- Make this work later
+-- remap('v', '<leader>ro', '\'<,\'>s/\$\([a-zA-Z_0-9]*\)\[\'\(.\{-}\)\\\'\]/$\1->\2/g<CR>', opts);
+-- Refactor PHP Object > Array
+
 ----
 
 -- Telescope
@@ -94,7 +103,8 @@ remap("n", "<leader>fg", ":Telescope git_status <CR>", opts) -- Find git files
 remap("n", "<leader>fb", ":Telescope buffers <CR>", opts) -- Find in buffers
 remap("n", "<leader>fd", ":Telescope find_files cwd=%:h <CR>", opts) -- Find in directory
 remap("n", "<leader>fc", ":Telescope find_files cwd=~/.config/nvim <CR>", opts) -- Find in nvim config.
-remap("n", "<leader>lg", ":Telescope live_grep <CR>", opts)
+-- remap("n", "<leader>lg", ":Telescope live_grep <CR>", opts) -- Normal version without plugin
+remap("n", "<leader>lg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", opts) -- Modified version with plugin
 -- remap("n", "<leader>o", ":Telescope lsp_document_symbols symbols='method' <CR>", opts)
 -- remap("n", "<leader>tt", ":Telescope <CR>", opts)
 -- remap("n", "<leader>tds", ":Telescope lsp_document_symbols <CR>", opts)
@@ -103,3 +113,14 @@ remap("n", "<leader>lg", ":Telescope live_grep <CR>", opts)
 -- remap("n", "<leader>twd", ":Telescope lsp_workspace_diagnostics <CR>", opts)
 -- remap("n", "<leader>tgs", ":Telescope git_status <CR>", opts)
 
+-- Refactoring
+-- Remaps for the refactoring operations currently offered by the plugin
+vim.api.nvim_set_keymap("v", "<leader>re", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function')<CR>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("v", "<leader>rf", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Function To File')<CR>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("v", "<leader>rv", [[ <Esc><Cmd>lua require('refactoring').refactor('Extract Variable')<CR>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("v", "<leader>ri", [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})
+-- Extract block doesn't need visual mode
+vim.api.nvim_set_keymap("n", "<leader>rb", [[ <Cmd>lua require('refactoring').refactor('Extract Block')<CR>]], {noremap = true, silent = true, expr = false})
+vim.api.nvim_set_keymap("n", "<leader>rbf", [[ <Cmd>lua require('refactoring').refactor('Extract Block To File')<CR>]], {noremap = true, silent = true, expr = false})
+-- Inline variable can also pick up the identifier currently under the cursor without visual mode
+vim.api.nvim_set_keymap("n", "<leader>ri", [[ <Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], {noremap = true, silent = true, expr = false})

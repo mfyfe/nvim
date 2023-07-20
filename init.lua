@@ -13,7 +13,7 @@ require('config.keybindings')
 require "config.dap"
 
 -- Material 
--- NOTE: style must be set before setting colorscheme.
+-- NOTE style must be set before setting colorscheme.
 vim.g.material_style = 'deep ocean'
 vim.cmd 'colorscheme material'
 

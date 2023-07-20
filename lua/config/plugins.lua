@@ -11,6 +11,15 @@ return require('packer').startup(function()
   use "theHamsta/nvim-dap-virtual-text"
   -- use "nvim-telescope/telescope-dap.nvim"
 
+  -- Refactoring
+  use {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {
+      {"nvim-lua/plenary.nvim"},
+      {"nvim-treesitter/nvim-treesitter"}
+    }
+  }
+
   -- Prettier
   use { 'sbdchd/neoformat' }
 
@@ -23,7 +32,10 @@ return require('packer').startup(function()
   -- Telescope finder
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { 'nvim-lua/plenary.nvim' }
+    requires = {
+      'nvim-lua/plenary.nvim',
+      "nvim-telescope/telescope-live-grep-args.nvim"
+    }
   }
 
   -- Mark lines with git changes
